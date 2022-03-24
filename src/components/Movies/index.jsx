@@ -4,12 +4,42 @@ import "./style.css"
 
 export default function Movies() {
     return(
-        <main className="movies-screen">
-            <h1>Movies Screen</h1>
-            <Link to = "/sections">
-                <h2>Go to Next</h2>
-            </Link>
-        </main>
+        <section className="movies-screen">
+            <h1>Choose a movie</h1>
+            <div className="movies-container">
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                <div className="movie">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg" alt="Movie Poster" />
+                </div>
+                
+            </div>
+        </section>
 
     )
 }

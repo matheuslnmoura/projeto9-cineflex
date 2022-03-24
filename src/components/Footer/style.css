@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    --body-bg: #E5E5E5;
+    --app-bg: #fafafa;
+    --header-bg: #C3CFD9;
+    --footer-bg: #DFE6ED;
+    --header-buttons: #E8833A;
+    --font-color: #293845;
+    
+  }
+
+
+footer {
+    background-color: var(--footer-bg);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .container {
+    width: 90%;
+    margin: auto;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+footer .container img {
+    width: 55px;
+    margin-right: 14px;
+}
+
+footer .container .movies-info {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .container .movies-info .name {
+    margin-bottom: 8px;
+}

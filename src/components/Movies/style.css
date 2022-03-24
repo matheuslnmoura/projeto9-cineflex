@@ -1,3 +1,44 @@
+* {
+    box-sizing: border-box;
+    --body-bg: #E5E5E5;
+    --app-bg: #fafafa;
+    --header-bg: #C3CFD9;
+    --footer-bg: #9EADBA;
+    --header-buttons: #E8833A;
+    --font-color: #293845;
+    
+  }
+
+
+.movies-screen {
+    width: 100%;
+    height: calc(100% - 67px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    color: var(--font-color);
+}
+
 .movies-screen h1 {
-    background-color: blue;
+    font-size: 24px;
+    padding: 30px 0px;
+}
+
+.movies-screen .movies-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.movies-screen .movies-container .movie {
+    width: 34.4%;
+    margin-bottom: 27px;
+}
+
+.movies-screen .movies-container .movie img {
+    width: 100%;
 }

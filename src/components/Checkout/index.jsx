@@ -4,12 +4,12 @@ import "./style.css"
 
 export default function Checkout() {
     return(
-        <main className="checkout-screen">
+        <section className="checkout-screen">
             <h1>Checkout Screen</h1>
             <Link to = "/">
                 <h2>Back To Start</h2>
             </Link>
-        </main>
+        </section>
 
     )
 }
