@@ -1,9 +1,33 @@
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "./style.css"
 import Footer from "../Footer"
 
 export default function Seats() {
+    const {sectionId} = useParams()
+    const [seatsInfo, setSeatsInfo] = useState([])
+    
+    useEffect(()=>{
+        const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sectionId}/seats`)
+        request.then((response)=>{
+            setSeatsInfo(response.data)           
+        })
+    }, [])
+
+    function renderSeats(firstSeat, lastSeat){
+        const {seats} = seatsInfo
+        if(seatsInfo !== [] && seats !== undefined) {
+            return seats.map((seat, index)=>{
+                let id = index + 1 
+                if(id >= firstSeat && id <= lastSeat)
+                return(
+                    <div className="seat" key={seat.name + " " + id} >{seat.name} </div>
+                )
+            })
+        }
+    }
+    
     return(
         <>
             <section className="seats-screen">
@@ -11,64 +35,19 @@ export default function Seats() {
                 <div className="seats-container">
                     <div className="seats">
                         <div className="first-row">
-                            <div className="seat">1</div>
-                            <div className="seat">2</div>
-                            <div className="seat">3</div>
-                            <div className="seat">4</div>
-                            <div className="seat">5</div>
-                            <div className="seat">6</div>
-                            <div className="seat">7</div>
-                            <div className="seat">8</div>
-                            <div className="seat">9</div>
-                            <div className="seat">10</div>
+                            {renderSeats(1,10)}
                         </div>
                         <div className="second-row">
-                            <div className="seat">11</div>
-                            <div className="seat">12</div>
-                            <div className="seat">13</div>
-                            <div className="seat">14</div>
-                            <div className="seat">15</div>
-                            <div className="seat">16</div>
-                            <div className="seat">17</div>
-                            <div className="seat">18</div>
-                            <div className="seat">19</div>
-                            <div className="seat">20</div>
+                            {renderSeats(11,20)}
                         </div>
                         <div className="third-row">
-                            <div className="seat">21</div>
-                            <div className="seat">22</div>
-                            <div className="seat">23</div>
-                            <div className="seat">24</div>
-                            <div className="seat">25</div>
-                            <div className="seat">26</div>
-                            <div className="seat">27</div>
-                            <div className="seat">28</div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
+                            {renderSeats(21,30)}   
                         </div>
                         <div className="fourth-row">
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
+                            {renderSeats(31,40)}
                         </div>
                         <div className="fifth-row">
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
-                            <div className="seat"></div>
+                            {renderSeats(41,50)}
                         </div>
                     </div>
                     <div className="legend">
@@ -89,17 +68,17 @@ export default function Seats() {
                 </div>
                 <div className="user-data">
                     <div className="name">
-                        <label for="User">Nome do comprador:</label>
+                        <label >Nome do comprador:</label>
                         <input type="text" id="User" name="Name" placeholder="Digite seu nome..."/>
                     </div>
                     <div className="name">
-                        <label for="User">CPF do comprador:</label>
+                        <label >CPF do comprador:</label>
                         <input type="text" id="User" name="Name" placeholder="Digite seu CPF..."/>
                     </div>
                 </div>
                 <button>Reservar assento(s)</button>
             </section>
-            <Footer />
+            {/* <Footer /> */}
         </>
 
 
