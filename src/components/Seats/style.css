@@ -50,7 +50,7 @@
     font-size: 11px;
 }
 
-.seats-screen .seats-container .seats .seat {
+/* .seats-screen .seats-container .seats .seat {
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -60,7 +60,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 18px; 
-}
+} */
 
 .seats-screen .seats-container .legend {
     width: 60%;
@@ -102,8 +102,13 @@
     border: 1px solid #F7C52B;
 }
 
+.seats-screen form {
+    width: 100%;
+}
+
 .seats-screen .user-data {
     width: 90%;
+    margin: auto;
 }
 
 .seats-screen .user-data div {
@@ -160,4 +165,5 @@
     margin-right: 8px;
     margin-bottom: 10px;
     padding: 13px;
+    margin: auto;
 }

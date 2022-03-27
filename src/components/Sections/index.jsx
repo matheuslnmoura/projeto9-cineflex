@@ -16,6 +16,7 @@ export default function Sections() {
         })
     }, [])
 
+    const {id, title, posterURL} = sectionsInfo
     function renderSectionsDates() {
         const {days} = sectionsInfo
         if(days !== undefined) {
@@ -62,7 +63,7 @@ export default function Sections() {
                 </div>
             </section>
 
-            <Footer sectionsInfo = {sectionsInfo} />
+            <Footer id = {id} title = {title} posterURL = {posterURL} />
         </>
 
 

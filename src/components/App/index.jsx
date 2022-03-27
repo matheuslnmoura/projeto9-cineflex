@@ -11,7 +11,7 @@ import Checkout from "../Checkout"
 
 
 export default function App() {
-    const [sectionsInfo, setSectionsInfo] = useState([])
+    const [checkoutInfo, setCheckoutInfo] = useState([])
     return (
         <main className="app-main">
             <BrowserRouter>
@@ -19,8 +19,8 @@ export default function App() {
                 <Routes>
                     <Route path = "/" element =  {<Movies />} />
                     <Route path = "/sections/:movieId" element =  {<Sections />} />
-                    <Route path = "/seats/:sectionId" element =  {<Seats />} />
-                    <Route path = "/checkout" element =  {<Checkout />} />
+                    <Route path = "/seats/:sectionId" element =  {<Seats setCheckoutInfo={setCheckoutInfo} />} />
+                    <Route path = "/checkout" element =  {<Checkout checkoutInfo = {checkoutInfo} setCheckoutInfo={setCheckoutInfo} />} />
                 </Routes>
             </BrowserRouter>
         </main>

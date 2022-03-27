@@ -2,11 +2,13 @@
 import "./style.css"
 
 export default function Footer(props) {
-    const {sectionsInfo} = props
-    const {title, posterURL, day, name} = sectionsInfo
-    
+    const {id, title, posterURL, weekday, name} = props
 
-    console.log(sectionsInfo)
+
+    // return (
+    //     <></>
+    // )
+    
     return(
         <footer>
             <div className="container">
@@ -14,7 +16,14 @@ export default function Footer(props) {
                 <div className="movies-info">
                     <span className="name">{title}</span>
                     <span className="section">{
-                    day!== undefined ? `${day.weekday} - ` : ""} {name !== undefined ? name : ""}</span>
+                        weekday !== undefined ? 
+                        `${weekday} - ` 
+                        : ""} 
+                        {name !== undefined ? 
+                        name 
+                        :""
+                    }
+                    </span>
                 </div>
             </div>
         </footer>
