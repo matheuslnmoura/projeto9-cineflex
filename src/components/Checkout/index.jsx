@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import "./style.css"
 
@@ -16,12 +17,19 @@ title: "Rogue"
 */
 
 export default function Checkout(props) {
+    const [checkoutInfoUpdate, setCheckoutInfoUpdate] = useState({})
     const {checkoutInfo, setCheckoutInfo} = props
-    const {buyersInfo, date, title, seatsNumber} = checkoutInfo
+    const {buyerInfo, date, title, showtime, seatsNumber} = checkoutInfo
+    const {name, cpf} = buyerInfo
 
+    const seatsNumberOrdered = seatsNumber.sort((a,b)=>{
+        if(a > b) return 1
+        if (a < b) return -1
+        return 0
+    })
     
 
-    console.log(checkoutInfo)
+    
     return(
         <>
             <section className="checkout-screen">
@@ -30,18 +38,21 @@ export default function Checkout(props) {
                     <div className="section resume">
                         <h2>Filme e sessão</h2>
                         <p>{title}</p>
-                        <p>{date} 15:00</p>
+                        <p>{date} {showtime}</p>
                     
                     </div>
                     <div className="seats resume">
                         <h2>Ingressos</h2>
-                        <p>Assento 15</p>
-                        <p>Assento 16</p>
+                        {seatsNumberOrdered.map((seatNumber, index)=>{
+                            return <p key={seatNumber + " " + index}>Assento {seatNumber}</p>
+                        })}
+                        {/* <p>Assento 15</p>
+                        <p>Assento 16</p> */}
                     </div>
                     <div className="client resume">
                         <h2>Comprador</h2>
-                        <p>jao</p>
-                        <p>{`CPF: 00998`}</p>
+                        <p>{name}</p>
+                        <p>{`CPF: ${cpf}`}</p>
                     </div>
                 </div>
                 <button>Voltar para Home</button>

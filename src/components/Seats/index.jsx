@@ -20,7 +20,7 @@ export default function Seats(props) {
     let posterURL = ""
     let weekday = ""
     let date = ""
-    let name = ""
+    let showtime = "" //showtime
     
     
     useEffect(()=>{
@@ -35,7 +35,7 @@ export default function Seats(props) {
         posterURL = seatsInfo.movie.posterURL
         weekday = seatsInfo.day.weekday
         date = seatsInfo.day.date
-        name = seatsInfo.name
+        showtime = seatsInfo.name
     }
 
 
@@ -128,11 +128,11 @@ export default function Seats(props) {
         setNameValue("")
         setDocumentValue("")
         
-        const checkoutObj = {title: title, date: date, buyerInfo: requestObj, seatsNumber: selectedSeatsName}
+        const checkoutObj = {title: title, date: date, showtime: showtime, buyerInfo: requestObj, seatsNumber: selectedSeatsName}
 
         setCheckoutInfo(checkoutObj)
         
-        
+
         navigate('/checkout')
     }
     
@@ -207,7 +207,7 @@ export default function Seats(props) {
                 </form>
                 
             </section>
-            <Footer title = {title} posterURL = {posterURL} weekday = {weekday} name = {name} />
+            <Footer title = {title} posterURL = {posterURL} weekday = {weekday} name = {showtime} />
         </>
 
 
