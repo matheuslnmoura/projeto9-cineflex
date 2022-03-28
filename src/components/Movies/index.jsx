@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -14,8 +14,8 @@ export default function Movies() {
     }, [])
 
     function renderMovies() {
-        return moviesList.map(movie=>{
-            return <Movie id = {movie.id} posterURL = {movie.posterURL} title = {movie.title} />
+        return moviesList.map((movie, index)=>{
+            return <Movie id = {movie.id} posterURL = {movie.posterURL} title = {movie.title} key = {index + " " + movie.id} />
         })
     }
 

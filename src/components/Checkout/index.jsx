@@ -1,26 +1,13 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./style.css"
 
-/*
-
-buyerInfo:
-cpf: "129.389.393-44"
-ids: (2) [7495, 7496]
-name: "Projeto Cineflex"
-[[Prototype]]: Object
-date: "26/10/2021"
-seatsNumber: (2) ['45', '46']
-title: "Rogue"
-
-*/
 
 export default function Checkout(props) {
-    const [checkoutInfoUpdate, setCheckoutInfoUpdate] = useState({})
     const {checkoutInfo, setCheckoutInfo} = props
     const {buyerInfo, date, title, showtime, seatsNumber} = checkoutInfo
     const {name, cpf} = buyerInfo
+    const navigate = useNavigate()
 
     const seatsNumberOrdered = seatsNumber.sort((a,b)=>{
         if(a > b) return 1
@@ -28,7 +15,11 @@ export default function Checkout(props) {
         return 0
     })
     
+    function backToStart(){
+        setCheckoutInfo({})
 
+        navigate("/")
+    }
     
     return(
         <>
@@ -55,7 +46,7 @@ export default function Checkout(props) {
                         <p>{`CPF: ${cpf}`}</p>
                     </div>
                 </div>
-                <button>Voltar para Home</button>
+                <button onClick={backToStart}>Voltar para Home</button>
             </section>
         </>
 

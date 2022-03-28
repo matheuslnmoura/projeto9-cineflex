@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from 'styled-components';
@@ -73,6 +73,9 @@ export default function Seats(props) {
         }
 
         function selectSeats(seat) {
+            if (seat.isAvailable === false) {
+                alert("Assento não disponível")
+            }
             if (selectedSeatsId.indexOf(seat.id) === -1 && seat.isAvailable === true){
                 setSelectedSeatsName([...selectedSeatsName, seat.name])
                 setSelectedSeatsId([...selectedSeatsId, seat.id])
@@ -92,21 +95,7 @@ export default function Seats(props) {
 
 
 
-    const SeatContainer = styled.div`
-        
-        div {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background-color: ${props => props.seatBgColor};
-            border: ${props => props.seatBorderColor};
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 18px; 
-        }
-    
-    `
+
 
     function cpfMask(value) {
         return value
@@ -119,21 +108,30 @@ export default function Seats(props) {
 
     function sendInfos(event) {
         event.preventDefault()
-        
-        const requestObj = {ids: selectedSeatsId, name: nameValue, cpf: documentValue}
-        const postRequest = axios.post(
-            'https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', requestObj)
-
-        setSelectedSeatsId([])
-        setNameValue("")
-        setDocumentValue("")
-        
-        const checkoutObj = {title: title, date: date, showtime: showtime, buyerInfo: requestObj, seatsNumber: selectedSeatsName}
-
-        setCheckoutInfo(checkoutObj)
-        
-
-        navigate('/checkout')
+        if(selectedSeatsId.length === 0){
+            alert("Escolha pelo menos um assento")
+        } else if(nameValue === "") {
+            alert("Preencha seu nome")
+        } else if(documentValue === "") {
+            alert("Preencha seu CPF")
+        } else{        
+            const requestObj = {ids: selectedSeatsId, name: nameValue, cpf: documentValue}
+            const postRequest = axios.post(
+                'https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', 
+                requestObj
+            )
+    
+            setSelectedSeatsId([])
+            setNameValue("")
+            setDocumentValue("")
+            
+            const checkoutObj = {title: title, date: date, showtime: showtime, buyerInfo: requestObj, seatsNumber: selectedSeatsName}
+    
+            setCheckoutInfo(checkoutObj)
+            
+    
+            navigate('/checkout')
+        }
     }
     
 
@@ -213,3 +211,19 @@ export default function Seats(props) {
 
     )
 }
+
+const SeatContainer = styled.div`
+        
+    div {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: ${props => props.seatBgColor};
+        border: ${props => props.seatBorderColor};
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 18px; 
+    }
+
+`

@@ -2,12 +2,7 @@
 import "./style.css"
 
 export default function Footer(props) {
-    const {id, title, posterURL, weekday, name} = props
-
-
-    // return (
-    //     <></>
-    // )
+    const {title, posterURL, weekday, name} = props
     
     return(
         <footer>

@@ -46,6 +46,10 @@
     justify-content: stretch;
 }
 
+.sections-screen .sections-container article .hours a {
+    text-decoration: none;
+}
+
 .sections-screen .sections-container article .hours button {
     font-size: 18px;
     line-height: 21px;

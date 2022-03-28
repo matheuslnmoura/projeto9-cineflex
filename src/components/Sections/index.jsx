@@ -28,6 +28,7 @@ export default function Sections() {
                     date = {day.date} 
                     showtimes = {showtimes} 
                     index = {index}
+
                 />
             })
         }
@@ -37,7 +38,7 @@ export default function Sections() {
         const {id, weekday, date, showtimes, index} = props
 
         return(
-            <article key={id + weekday}>
+            <article key={id + " " + weekday}>
                 <h2>{weekday}- {date}</h2>
 
                 <div className="hours">
@@ -50,7 +51,11 @@ export default function Sections() {
     function ShowTimes(props) {
         const {showtime, id} = props
         return(
-            <Link to={`/seats/${id}`}><button className="time">{showtime}</button></Link>
+            <Link to={`/seats/${id}`} key = {showtime + " " + id}>
+                <button className="time">
+                    {showtime}
+                </button>
+            </Link>
         )
     }
 
